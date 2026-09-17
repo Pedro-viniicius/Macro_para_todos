@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Como Está o País</title>
+  <meta name="description" content="Revista mensal de macroeconomia brasileira, publicada no calendário oficial e explicada em três camadas: a parábola, o entendimento e a profundidade.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%231A1917'/><text x='50' y='68' font-size='52' text-anchor='middle' font-family='Georgia,serif' font-weight='700' fill='%23F7F4EE'>P</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="sr-only" href="#conteudo" style="position:absolute;left:8px;top:8px;background:var(--papel);padding:8px;z-index:100" onfocus="this.classList.remove('sr-only')" onblur="this.classList.add('sr-only')">Pular para o conteúdo</a>
+  <div class="faixa-ilustrativa" role="note"><strong>Protótipo com dados ilustrativos</strong> — os valores não são reais. Fontes e endpoints indicados são os oficiais.</div>
+  <header class="topo">
+    <div class="container topo-inner">
+      <a class="marca" href="#/" aria-label="Como Está o País — capa"><span class="sigla" aria-hidden="true">CEP</span> Como Está o País</a>
+      <nav class="nav-desktop" id="nav-desktop" aria-label="Principal"></nav>
+      <div class="topo-acoes">
+        <button type="button" class="btn-icone" data-tema aria-label="Alternar modo claro e escuro" title="Modo claro/escuro">◐</button>
+        <span id="acao-topo"></span>
+      </div>
+    </div>
+  </header>
+
+  <div id="app"></div>
+
+  <nav class="nav-mobile" id="nav-mobile" aria-label="Principal (celular)"></nav>
+
+  <div class="gaveta-fundo" id="gaveta-fundo"></div>
+  <div class="gaveta gaveta-glossario" id="gaveta-glossario" role="dialog" aria-modal="true" aria-labelledby="gaveta-titulo"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="data/indicadores.js"></script>
+  <script src="data/glossario.js"></script>
+  <script src="data/calendario.js"></script>
+  <script src="data/edicoes.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/screens/onboarding.js"></script>
+  <script src="js/screens/capa.js"></script>
+  <script src="js/screens/materia.js"></script>
+  <script src="js/screens/painel.js"></script>
+  <script src="js/screens/indicador.js"></script>
+  <script src="js/screens/calendario.js"></script>
+  <script src="js/screens/arquivo.js"></script>
+  <script src="js/screens/planos.js"></script>
+</body>
+</html>

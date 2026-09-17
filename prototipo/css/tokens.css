@@ -1,0 +1,42 @@
+/* Tokens do design system "Tipografia de Feira" — ver ux/06-design-system.md */
+:root {
+  --papel: #F7F4EE; --papel-2: #EFEAE1; --papel-3: #E4DDD0;
+  --tinta: #1A1917; --tinta-2: #4A4742; --tinta-3: #77726A;
+  --acento: #8C2F1E; --acento-hover: #6E2416; --acento-suave: #F3DED8;
+  --alta: #9A3F00; --baixa: #1F5A3C; --estavel: #4A4742;
+  --novo: #1F4E79; --novo-fundo: #DCE8F3;
+  --aviso: #7A5A00; --aviso-fundo: #FFF3C4;
+  --foco: #1F4E79;
+  --sombra: 0 1px 2px rgba(26,25,23,.06), 0 4px 14px rgba(26,25,23,.06);
+
+  --serifa-titulo: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --serifa-corpo: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --e1: 4px; --e2: 8px; --e3: 12px; --e4: 16px; --e5: 24px; --e6: 32px; --e7: 48px; --e8: 64px;
+  --raio: 6px; --raio-g: 10px;
+  --coluna: 640px; --largura-max: 1120px;
+  --altura-nav: 56px;
+}
+:root[data-theme="dark"] {
+  --papel: #161513; --papel-2: #201F1C; --papel-3: #2E2C28;
+  --tinta: #EDE8DF; --tinta-2: #BDB6AA; --tinta-3: #8E877B;
+  --acento: #E8836D; --acento-hover: #F09A87; --acento-suave: #3A221C;
+  --alta: #F0A060; --baixa: #7CC99B; --estavel: #BDB6AA;
+  --novo: #7FB3E0; --novo-fundo: #1E2F40;
+  --aviso: #F5D67A; --aviso-fundo: #3A3010;
+  --foco: #7FB3E0;
+  --sombra: 0 1px 2px rgba(0,0,0,.4), 0 4px 14px rgba(0,0,0,.3);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --papel: #161513; --papel-2: #201F1C; --papel-3: #2E2C28;
+    --tinta: #EDE8DF; --tinta-2: #BDB6AA; --tinta-3: #8E877B;
+    --acento: #E8836D; --acento-hover: #F09A87; --acento-suave: #3A221C;
+    --alta: #F0A060; --baixa: #7CC99B; --estavel: #BDB6AA;
+    --novo: #7FB3E0; --novo-fundo: #1E2F40;
+    --aviso: #F5D67A; --aviso-fundo: #3A3010;
+    --foco: #7FB3E0;
+    --sombra: 0 1px 2px rgba(0,0,0,.4), 0 4px 14px rgba(0,0,0,.3);
+  }
+}
