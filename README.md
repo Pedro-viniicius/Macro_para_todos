@@ -1,3 +1,14 @@
+# Macro para todos
+
+Dois protótipos de UX no mesmo repositório:
+
+| Pasta | Produto | Publicado |
+|---|---|---|
+| `prototipo/` | **Como Está o País** — revista mensal de macroeconomia em três camadas (parábola, entendimento, profundidade) | https://macro-para-todos.vercel.app |
+| `plataforma/` | **Central Macroeconômica** — plataforma SaaS de inteligência macroeconômica (landing de vendas + app com 17 telas), ver `plataforma/README.md` | https://central-macroeconomica.vercel.app |
+
+---
+
 # Como Está o País — revista mensal de macroeconomia brasileira
 
 Protótipo clicável e documentação de UX de uma revista digital por assinatura mensal que publica no **calendário oficial** (BCB, IBGE, Tesouro Nacional, IPEA, MTE) e explica cada dado em **três camadas**: a parábola, o entendimento e a profundidade.

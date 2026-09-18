@@ -1,0 +1,14 @@
+/* Design system "Central Macroeconômica" — mesmos tokens do arquivo Figma */
+:root{
+  --verde:#123C32;--verde-esc:#0C2A23;--verde-suave:#E4EEE9;--verde-medio:#1A4A3E;
+  --azul:#163A5F;--azul-suave:#E3EBF3;
+  --ouro:#D8A928;--ouro-suave:#F6ECCF;
+  --pagina:#F7F6F1;--sup:#FFFFFF;--sutil:#F0EFE9;
+  --t1:#16211D;--t2:#5D6762;--t3:#8A928D;--inv:#FFFFFF;
+  --borda:#E3E6E1;--borda-forte:#C9CEC8;
+  --pressao:#B4541E;--pressao-s:#F8E6DA;--atencao:#9A7A12;--atencao-s:#F6ECCF;--expansao:#1F6B4A;--expansao-s:#DDEFE4;--restritivo:#163A5F;--restritivo-s:#E3EBF3;--neutro:#5D6762;--neutro-s:#ECEDEA;
+  --serie1:#123C32;--serie2:#163A5F;--serie3:#D8A928;--grade:#ECEDEA;--area:#E4EEE9;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;--serif-t:'Fraunces',Georgia,serif;--serif-c:'Source Serif 4',Georgia,serif;
+  --r-sm:6px;--r-md:10px;--r-lg:16px;--sombra:0 1px 2px rgba(22,33,29,.05),0 6px 20px rgba(22,33,29,.05);
+  --sidebar:256px;--topbar:60px;
+}
