@@ -2,7 +2,7 @@
 window.CM = window.CM || {};
 (function (M) {
   const CHAVE = 'cm-prototipo-v1';
-  M.estado = { lista: ['ipca', 'selic', 'cambio', 'pib', 'desemprego'], onboarding: false, perfil: null, temas: [], assinante: true, email: null };
+  M.estado = { lista: ['ipca', 'selic', 'cambio', 'pib', 'desemprego'], onboarding: false, perfil: null, temas: [], nivel: 'essencial', explicacoes: true, assinante: true, email: null };
   try { Object.assign(M.estado, JSON.parse(localStorage.getItem(CHAVE) || '{}')); } catch (e) { /* sem armazenamento */ }
   M.salvar = () => { try { localStorage.setItem(CHAVE, JSON.stringify(M.estado)); } catch (e) { /* ignora */ } };
   let tt; M.toast = (m) => { const t = document.getElementById('toast'); t.textContent = m; t.dataset.on = 'true'; clearTimeout(tt); tt = setTimeout(() => (t.dataset.on = 'false'), 2800); };
@@ -26,6 +26,7 @@ window.CM = window.CM || {};
     if (tela.depois) tela.depois(r.params, r.query);
     if (!M._manter) window.scrollTo(0, 0); M._manter = false;
     const b = document.getElementById('busca-global'); if (b) b.onkeydown = (e) => { if (e.key === 'Enter') location.hash = '#/app/indicadores?q=' + encodeURIComponent(b.value); };
+    const sw = document.getElementById('sw-expl'); if (sw) sw.onchange = () => { M.estado.explicacoes = sw.checked; M.salvar(); M._manter = true; M.render(); M.toast(sw.checked ? 'Explicações ligadas: linguagem simples em destaque.' : 'Explicações desligadas: visão analítica compacta.'); };
   };
   // Tooltip de termos
   const tip = () => document.getElementById('tooltip');
@@ -35,6 +36,7 @@ window.CM = window.CM || {};
   document.addEventListener('focusout', (e) => { if (e.target.closest('[data-termo]')) tip().dataset.on = 'false'; });
   document.addEventListener('click', (e) => {
     const l = e.target.closest('[data-lista]'); if (l) { e.preventDefault(); M.alternarLista(l.dataset.lista); return; }
+    const vg = e.target.closest('[data-ver-grafico]'); if (vg) { const f = vg.closest('.grafico'); f.classList.toggle('aberto'); vg.textContent = f.classList.contains('aberto') ? 'Ocultar gráfico' : 'Ver gráfico'; return; }
     const t = e.target.closest('[data-termo]'); if (t) { e.preventDefault(); location.hash = '#/app/indicador/' + ({ Selic: 'selic', IPCA: 'ipca', PIB: 'pib', Copom: 'selic', Focus: 'exp-ipca', PTAX: 'cambio', 'dívida bruta': 'divida-bruta', 'resultado primário': 'primario', 'juro real': 'selic-real', 'núcleo': 'ipca-nucleo', CDS: 'risco' }[t.dataset.termo] || 'ipca'); }
   });
   window.addEventListener('hashchange', M.render);

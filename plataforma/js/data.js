@@ -23,7 +23,7 @@ window.CM = window.CM || {};
 
   // Estados semânticos: pressao, atencao, expansao, aquecido, restritivo, desaceleracao, estavel, neutro
   M.indicadores = [
-    { id: 'ipca', tema: 'inflacao', nome: 'Inflação — IPCA', sigla: 'IPCA', longo: 'Índice Nacional de Preços ao Consumidor Amplo', desc: 'Principal índice oficial de inflação do Brasil.', unidade: '%', fmt: 'pct2', valor: 4.32, anterior: 4.14, varTxt: '↑ 0,18 p.p.', varTipo: 'pressao', periodo: 'Acumulado em 12 meses · ago. 2026', ref: 'ago. 2026', estado: 'pressao', estadoTxt: 'Pressão', contexto: 'A inflação acelerou em relação ao período anterior.', fonte: 'IBGE', freq: 'Mensal', ultima: '10 set. 2026', proxima: '09 out. 2026', expectativa: 4.05, media10: 5.4, mes: 0.32, mesAnt: 0.41,
+    { id: 'ipca', tema: 'inflacao', nome: 'Inflação — IPCA', sigla: 'IPCA', longo: 'Índice Nacional de Preços ao Consumidor Amplo', desc: 'Principal índice oficial de inflação do Brasil.', unidade: '%', fmt: 'pct2', valor: 4.32, anterior: 4.45, varTxt: '↓ 0,13 p.p.', varTipo: 'neutro', periodo: 'Acumulado em 12 meses · ago. 2026', ref: 'ago. 2026', estado: 'pressao', estadoTxt: 'Acima da meta', contexto: 'Os preços continuam subindo, mas em ritmo menor que antes.', fonte: 'IBGE', freq: 'Mensal', ultima: '10 set. 2026', proxima: '09 out. 2026', expectativa: 4.05, media10: 5.4, mes: 0.32, mesAnt: 0.41,
       serie: interp([8.5, 3.0, 4.0, 4.3, 3.9, 9.5, 10.5, 5.8, 4.6, 4.8, 5.3, 4.32], 120, 3, 0.25),
       interpretar: 'O IPCA mede a variação dos preços de uma cesta de produtos e serviços consumidos pelas famílias brasileiras com renda de 1 a 40 salários mínimos, em 16 regiões. O valor "em 12 meses" é a referência mais usada para reajustes e para a meta do Banco Central (3%, com tolerância de 1,5 ponto).',
       importa: ['Juros: quando a inflação sobe, o Banco Central tende a manter ou elevar a Selic.', 'Poder de compra: salários que não acompanham o IPCA compram menos.', 'Consumo: preços subindo mais rápido reduzem a demanda por bens duráveis.', 'Custos das empresas: insumos, energia e serviços reajustam com defasagem.'],
@@ -101,17 +101,18 @@ window.CM = window.CM || {};
   ];
   for (const i of M.indicadores) { if (i.serie && i.serie.length && !i.curva) { i.serie[i.serie.length - 1] = i.valor; if (i.serie.length > 1 && i.anterior !== undefined && Math.abs(i.anterior - i.valor) < Math.abs(i.valor) * 0.5 + 1) i.serie[i.serie.length - 2] = i.anterior; } }
   M.ind = (id) => M.indicadores.find((i) => i.id === id);
-  M.temas = { inflacao: 'Inflação', juros: 'Juros', atividade: 'Atividade Econômica', emprego: 'Emprego', credito: 'Crédito', cambio: 'Câmbio', fiscal: 'Fiscal', mercados: 'Mercados', expectativas: 'Expectativas', global: 'Global' };
+  M.temas = { inflacao: 'Inflação e preços', juros: 'Juros e Banco Central', atividade: 'Economia', emprego: 'Emprego e renda', credito: 'Crédito', cambio: 'Dólar', fiscal: 'Contas públicas', mercados: 'Brasil e o mundo', expectativas: 'O que o mercado espera', global: 'Brasil e o mundo' };
+  M.temasTecnicos = { inflacao: 'Índices de preços', juros: 'Política monetária', atividade: 'Atividade econômica', emprego: 'Mercado de trabalho', credito: 'Crédito', cambio: 'Câmbio e setor externo', fiscal: 'Setor fiscal', mercados: 'Mercados e setor externo', expectativas: 'Expectativas de mercado' };
 
   M.resumo = [
-    { t: 'A inflação apresentou aceleração nos últimos meses.', ind: 'ipca' },
+    { t: 'A inflação desacelerou, mas segue acima da meta.', ind: 'ipca' },
     { t: 'A taxa básica de juros permanece em nível restritivo.', ind: 'selic' },
     { t: 'O mercado de trabalho continua relativamente aquecido.', ind: 'desemprego' },
     { t: 'A atividade econômica apresenta crescimento moderado.', ind: 'pib' },
     { t: 'A dívida pública segue em trajetória de alta, pressionada pelos juros.', ind: 'divida-bruta' }
   ];
   M.mapa = [
-    { dim: 'Inflação', estado: 'pressao', estadoTxt: 'Pressão moderada', leitura: 'Acumulado em 12 meses acima da meta; serviços e alimentos puxam.', rota: '#/app/inflacao' },
+    { dim: 'Inflação', estado: 'pressao', estadoTxt: 'Pressão moderada', leitura: 'Os preços sobem mais devagar, mas ainda acima da meta; serviços e alimentos pesam.', rota: '#/app/inflacao' },
     { dim: 'Atividade Econômica', estado: 'expansao', estadoTxt: 'Expansão', leitura: 'Serviços e consumo crescem; indústria e investimento recuam.', rota: '#/app/atividade' },
     { dim: 'Mercado de Trabalho', estado: 'aquecido', estadoTxt: 'Aquecido', leitura: 'Desemprego perto da mínima histórica e renda em alta.', rota: '#/app/emprego' },
     { dim: 'Crédito', estado: 'restritivo', estadoTxt: 'Restritivo', leitura: 'Juros ao consumidor elevados; inadimplência sobe devagar.', rota: '#/app/credito' },

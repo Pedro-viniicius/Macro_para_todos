@@ -27,6 +27,19 @@ cd plataforma && python3 -m http.server 8766   # ou: npx serve plataforma
 | `#/app/relatorios` · `#/app/relatorio/2026-09` | Relatórios e leitura editorial (Fraunces + Source Serif 4, sumário fixo) |
 | `#/app/plano` · `#/app/conta` · `#/app/configuracoes` | Assinatura com cancelamento honesto, conta, preferências e nível de detalhe |
 
+## Refino de UX: "Complexidade por trás. Clareza na frente."
+
+A interface segue a ordem **pergunta → resposta → número → contexto → detalhe**. Cada indicador tem seis níveis de linguagem (título humano → significado → valor → leitura → nome técnico → metodologia), definidos em `js/conteudo.js` — separados dos dados (`js/data.js`) para que a futura integração com APIs não toque no texto editorial.
+
+- **Onboarding em 3 passos** sem termos técnicos como escolha (o que quer entender → o que quer acompanhar, com siglas só como referência → quanto detalhe quer ver).
+- **Visão Geral**: "Como está a economia?", bloco "Em 1 minuto" com três coisas para acompanhar, "Brasil agora" (6 dimensões em frases), "O que mudou recentemente?", "O que isso significa?", "A história do momento" (sem causalidade simplista) e Mapa da economia.
+- **Detalhe do indicador** começa pela resposta; "O que é X?" e "Ver detalhes técnicos" (metodologia, unidade, ajuste sazonal, endpoint, tabela) vêm por último.
+- **Interruptor "Explicações"** no topo: ligado, linguagem simples; desligado, painel analítico compacto — uma plataforma só para iniciantes e analistas.
+- **Gráficos** com título em forma de pergunta, rótulo técnico secundário e anotações de contexto ("Inflação atingiu pico", "Início do ciclo de alta"). No celular, ficam atrás de "Ver gráfico".
+- **Busca** aceita linguagem humana ("preços", "desemprego", "dívida") ou técnica ("IPCA", "PNAD", "DBGG").
+- **Navegação** em linguagem humana (Inflação, Juros, Economia, Emprego, Dólar, Crédito, Contas Públicas, Expectativas); o vocabulário técnico aparece dentro das páginas e em tooltips.
+- Estados semânticos (Acima da meta, Restritivo, Aquecido, Atenção…) em vez de verde/vermelho.
+
 ## Fluxo principal
 
 Landing → Criar conta → Onboarding → Panorama → indicador → Comparar → Minha Lista. Navegação lateral entre todas as seções.
